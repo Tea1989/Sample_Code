@@ -1,0 +1,95 @@
+<body>
+    <div style="text-align: center;">
+        <h1 style="font-size:50px"><font color="#e50000">CS 420 Chat Channel</font></h1>
+    </div>
+    <br>
+
+    <div style="text-align: center;">
+        <font style="font-size:18px" color ="#1a1dd2">Message:</font>
+        <br>
+        <br>
+        <textarea class="text" id="msg" style="width: 380px; height: 180px;" onfocus="clearContents(this)"></textarea>
+    </div>
+    
+    <br>
+    <div style="text-align: center;">
+        <button class="button" id="send" onclick="document.getElementById('input').value = ''">Send</button>
+        <br>
+    </div>
+    <br>
+
+    <h1 style="font-size:20px"><font color="#eedc30">Group Chat:</font></h1> 
+    <br>
+    <span id="chat"></span>
+
+
+<script>
+
+function clearContents(element) {
+  element.value = '';
+}
+
+$(document).ready(function(){
+    
+    /* Receive Message*/
+    App.chat.received = function(data)
+    {
+        $("#chat").append(data['message']+"<br>")
+    }
+    
+    $("#send").click(function(){
+        msg = $("#msg").val()
+        
+        /* Send Message*/
+        App.chat.send_msg(msg)
+    })
+})
+</script>
+</body>
+
+
+<style>
+
+html { 
+  background: url(http://getwallpapers.com/wallpaper/full/2/2/b/542446.jpg) no-repeat center fixed; 
+  background-size: cover;
+}
+
+body { 
+  color: #C0C0C0; 
+}
+
+.text {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #1a1dd2;
+  border-radius: 4px;
+  background-color: #C0C0C0;
+}
+
+.button {
+  display: align-box;
+  padding: 15px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #1a1dd2;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #10b413}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+</style>
+
